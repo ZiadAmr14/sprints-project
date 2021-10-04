@@ -24,5 +24,7 @@ All changes should take place in a separate branch submitted to the main in the 
 ```sh
 > git branch -D branchName
 ```
+// to get main branch
 
+> git branch main
 Useful commit messages that describe what you have been working on are greatly appreciated, [here](https://www.conventionalcommits.org/en/v1.0.0/#summary) is a really great guide for writting a helpful commit message.
