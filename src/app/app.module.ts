@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AddPlaceComponent } from './add-place/add-place.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     LoginComponent,
     RegisterComponent,
     AuthComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    AddPlaceComponent
   ],
   imports: [
     BrowserModule,
