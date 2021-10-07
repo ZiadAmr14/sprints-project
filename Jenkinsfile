@@ -4,7 +4,7 @@ pipeline {
   
   stages {
     
-    stage('Preparation') {
+    stage('preparation') {
 
       steps {
         git 'https://github.com/ZiadAmr14/sprints-project.git'
