@@ -29,7 +29,6 @@ pipeline {
                     
                     sh """
                       docker login -u ${USERNAME} -p ${PASSWORD}
-                      cd angular-src
                       docker push nadertarekcs/angular-service:latest
                     """
                 }
