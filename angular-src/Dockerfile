@@ -1,8 +1,9 @@
 FROM node:latest as node
 WORKDIR /app
-COPY . .
-RUN npm install
+COPY package*.json /app/
+RUN npm ci
+COPY . /app
 RUN npm run build 
 
 FROM nginx:alpine
-COPY --from=node /public /usr/share/nginx/html
+COPY --from=node public/ /usr/share/nginx/html
