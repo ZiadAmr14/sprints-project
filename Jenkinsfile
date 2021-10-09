@@ -45,7 +45,7 @@ pipeline {
                 sh 'docker kill back-end-service'
                 sh 'docker rm back-end-service'
                 sh 'docker run -d -p 80:80 --name angular-service nadertarekcs/angular-service:latest'
-                sh 'docker run -d -p 5000:8080 --name back-end-service nadertarekcs/back-end-service:latest
+                sh 'docker run -d -p 5000:8080 --name back-end-service nadertarekcs/back-end-service:latest'
             }    
     }
   }     
