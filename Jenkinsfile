@@ -40,7 +40,6 @@ pipeline {
 
     stage('deploy'){
       steps {
-                sh 'docker kill angular-service'
                 sh 'docker run -d -p 80:80 --name angular-service nadertarekcs/angular-service:latest'
                 sh 'docker run -d -p 5000:8080 --name back-end-service nadertarekcs/back-end-service:latest'
             }    
