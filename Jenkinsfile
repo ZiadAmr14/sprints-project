@@ -18,6 +18,8 @@ pipeline {
         sh """
             cd angular-src
             docker build -t nadertarekcs/angular-service:latest .
+            cd ..
+            docker build -t nadertarekcs/back-end-service:latest .
         """
       }
     
@@ -30,6 +32,7 @@ pipeline {
                     sh """
                       docker login -u ${USERNAME} -p ${PASSWORD}
                       docker push nadertarekcs/angular-service:latest
+                      docker push nadertarekcs/back-end-service:latest
                     """
                 }
             }
@@ -39,7 +42,10 @@ pipeline {
             steps {
                 sh 'docker kill angular-service'
                 sh 'docker rm angular-service'
+                sh 'docker kill back-end-service'
+                sh 'docker rm back-end-service'
                 sh 'docker run -d -p 80:80 --name angular-service nadertarekcs/angular-service:latest'
+                sh 'docker run -d -p 5000:8080 --name back-end-service nadertarekcs/back-end-service:latest
             }    
     }
   }     
