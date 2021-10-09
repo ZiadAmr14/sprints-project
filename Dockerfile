@@ -4,9 +4,11 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
 RUN npm ci --only=production
+
+COPY . .
 
 FROM node:14-alpine
 
