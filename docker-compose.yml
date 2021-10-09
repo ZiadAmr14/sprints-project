@@ -1,0 +1,31 @@
+version: "3"
+services:
+  angular-app:
+    image: nadertarekcs/angular-service
+    stdin_open: true
+    ports: 
+      - "80:80"
+    networks:
+      - mean-app
+  api-server:
+    image: nadertarekcs/back-end-service
+    ports:
+      - "5000:8080"
+    networks:
+      - mean-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6.19-xenial
+    ports:
+      - "27017:27017"
+    networks:
+      - mean-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  mean-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
