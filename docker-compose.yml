@@ -8,9 +8,10 @@ services:
     networks:
       - mean-app
   api-server:
-   environment:
+     environment:
       - MONGO_URI
       - NODE_ENV=production
+      -PORT=8080
     image: nadertarekcs/back-end-service
     ports:
       - "5000:8080"
