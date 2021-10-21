@@ -1,11 +1,15 @@
 pipeline {
 
-  agent {label "jenkins-slave"}
+  agent none
   
   stages {
     
     stage('preparation') {
-
+      
+      agent { 
+            label 'jenkins-slave'
+      }
+      
       steps {
         git 'https://github.com/ZiadAmr14/sprints-project.git'
       }
@@ -13,6 +17,10 @@ pipeline {
     }
 
     stage('build') {
+      
+       agent { 
+            label 'jenkins-slave'
+      }
 
       steps {
         sh """
@@ -26,6 +34,10 @@ pipeline {
     }
 
     stage('push image') {
+      
+       agent { 
+            label 'jenkins-slave'
+      }
             steps {
                 withCredentials([usernamePassword(credentialsId:"DockerHub",usernameVariable:"USERNAME",passwordVariable:"PASSWORD")]) {
                     
@@ -39,8 +51,12 @@ pipeline {
         }
 
     stage('deploy'){
+       agent { 
+            label 'docker-containers'
+      }
       steps {
-                sh 'docker-compose up -d'
+                
+                sh 'docker-compose up -d '
             }    
     }
   }     
