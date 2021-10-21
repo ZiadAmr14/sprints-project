@@ -47,11 +47,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: "DockerHub", usernameVariable: "USERNAME", passwordVariable: "PASSWORD")]) {
 
           sh """
-          docker login - u $ {
-            USERNAME
-          } - p $ {
-            PASSWORD
-          }
+          docker login -u ${USERNAME} -p ${PASSWORD}
           docker push nadertarekcs / angular - service: latest
           docker push nadertarekcs / back - end - service: latest 
           """
