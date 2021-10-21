@@ -30,6 +30,11 @@ pipeline {
             docker build -t nadertarekcs/back-end-service:latest .
         """
       }
+       post {
+              failure {
+                slackSend (color: '#FF0000', message: "Building Images has Failed")
+             }
+    }
     
     }
 
@@ -48,16 +53,32 @@ pipeline {
                     """
                 }
             }
-        }
+      post {
+              failure {
+                slackSend (color: '#FF0000', message: "Pushing Images has Failed")
+             }
+    }
+}
 
     stage('deploy'){
        agent { 
             label 'docker-containers'
       }
+      
       steps {
-                
                 sh 'docker-compose up -d '
-            }    
+            } 
+      
+      post {
+              success {
+                slackSend (color: '#00FF00', message: "Application has been Deployed Successfully")
+             }
+
+              failure {
+                slackSend (color: '#FF0000', message: "Deployment Failed")
+               
+             }
+    }
     }
   }     
 
