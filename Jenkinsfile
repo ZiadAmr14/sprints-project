@@ -24,10 +24,10 @@ pipeline {
 
       steps {
         sh """
-        cd angular - src
-        docker build - t nadertarekcs / angular - service: latest.
-        cd..
-        docker build - t nadertarekcs / back - end - service: latest.
+        cd angular-src
+        docker build -t nadertarekcs/angular-service:latest .
+        cd ..
+        docker build -t nadertarekcs/back-end-service:latest .
         """
       }
       post {
@@ -48,8 +48,8 @@ pipeline {
 
           sh """
           docker login -u ${USERNAME} -p ${PASSWORD}
-          docker push nadertarekcs / angular - service: latest
-          docker push nadertarekcs / back - end - service: latest 
+          docker push nadertarekcs/angular-service:latest
+          docker push nadertarekcs/back-end-service:latest 
           """
         }
       }
