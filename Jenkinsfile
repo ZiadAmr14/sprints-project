@@ -4,7 +4,7 @@ pipeline {
 
   stages {
 
-    stage('preparation') {
+    stage('Preparation') {
 
       agent {
         label 'jenkins-slave'
@@ -16,7 +16,7 @@ pipeline {
 
     }
 
-    stage('build') {
+    stage('Building Images') {
 
       agent {
         label 'jenkins-slave'
@@ -38,7 +38,7 @@ pipeline {
 
     }
 
-    stage('push image') {
+    stage('Pushing Images') {
 
       agent {
         label 'jenkins-slave'
@@ -60,7 +60,7 @@ pipeline {
       }
     }
 
-    stage('deploy') {
+    stage('Deployment') {
       agent {
         label 'docker-containers'
       }
